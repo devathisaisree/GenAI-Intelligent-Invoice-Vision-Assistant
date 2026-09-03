@@ -1,0 +1,236 @@
+[
+  {
+    "event_id": "1460abb0-c6fa-4830-8b1c-5ed2b475cedf",
+    "timestamp": "2026-09-04T00:56:40",
+    "event_type": "DOCUMENT_UPLOADED",
+    "document_id": "INV-210AB13EAB520C21",
+    "file_name": "image.png",
+    "model": "gemini-3.6-flash",
+    "details": {
+      "file_name": "image.png",
+      "mime_type": "image/png",
+      "size_bytes": 773301,
+      "sha256": "210ab13eab520c211ec15d9c513dc3bd72ab822c95952cad56b7ec6682145ec9"
+    }
+  },
+  {
+    "event_id": "1400e1e5-a8fb-49d9-8c55-6b9ca7cfb59b",
+    "timestamp": "2026-09-04T00:57:12",
+    "event_type": "INVOICE_EXTRACTION_COMPLETED",
+    "document_id": "INV-210AB13EAB520C21",
+    "file_name": "image.png",
+    "model": "gemini-3.6-flash",
+    "details": {
+      "validation_status": "WARNING"
+    }
+  },
+  {
+    "event_id": "a91fdfa7-c8fb-4d4f-aec4-e5fab9ddb2a8",
+    "timestamp": "2026-09-04T00:58:16",
+    "event_type": "INVOICE_QUESTION_ANSWERED",
+    "document_id": "INV-210AB13EAB520C21",
+    "file_name": "image.png",
+    "model": "gemini-3.6-flash",
+    "details": {
+      "question": "can u give a brief explanation about the bill in an english tabular format?"
+    }
+  },
+  {
+    "event_id": "1893dc25-dc5e-4ddf-8994-1fba74d7e1a4",
+    "timestamp": "2026-09-04T01:03:31",
+    "event_type": "DOCUMENT_UPLOADED",
+    "document_id": "INV-210AB13EAB520C21",
+    "file_name": "image.png",
+    "file_hash": "210ab13eab520c211ec15d9c513dc3bd72ab822c95952cad56b7ec6682145ec9",
+    "model": "gemini-3.6-flash",
+    "prompt_version": "invoice-assistant-v1.0",
+    "ai_request": null,
+    "ai_response": null,
+    "validation_result": null,
+    "details": {
+      "file_name": "image.png",
+      "mime_type": "image/png",
+      "size_bytes": 773301,
+      "sha256": "210ab13eab520c211ec15d9c513dc3bd72ab822c95952cad56b7ec6682145ec9"
+    }
+  },
+  {
+    "event_id": "42408c37-42bc-4fe4-8d22-6e39db81c05f",
+    "timestamp": "2026-09-04T01:04:14",
+    "event_type": "AI_EXTRACTION_COMPLETED",
+    "document_id": "INV-210AB13EAB520C21",
+    "file_name": "image.png",
+    "file_hash": "210ab13eab520c211ec15d9c513dc3bd72ab822c95952cad56b7ec6682145ec9",
+    "model": "gemini-3.6-flash",
+    "prompt_version": "invoice-assistant-v1.0",
+    "ai_request": "\nYou are an expert invoice/document extraction AI.\n\nAnalyze the uploaded invoice, supplier invoice, tax invoice,\nutility bill, electricity bill, service invoice, or similar\nfinancial document.\n\nReturn EXACTLY ONE JSON OBJECT.\nDo not return markdown.\nDo not return explanations outside JSON.\n\nUse exactly this structure:\n\n{\n  \"supplier_name\": null,\n  \"invoice_number\": null,\n  \"invoice_date\": null,\n  \"due_date\": null,\n  \"currency\": null,\n  \"subtotal\": null,\n  \"tax\": null,\n  \"total\": null,\n  \"po_number\": null,\n  \"line_items\": [\n    {\n      \"description\": null,\n      \"quantity\": null,\n      \"unit_price\": null,\n      \"amount\": null\n    }\n  ]\n}\n\nRULES:\n\n1. Extract ONLY information visible in the document.\n2. Never invent or guess information.\n3. Use null when a value is unavailable or unreadable.\n4. Preserve invoice numbers exactly as text.\n5. Preserve dates as visible where practical.\n6. Extract currency when visible.\n7. Extract subtotal when visible.\n8. Extract tax when visible.\n9. Extract final payable total when visible.\n10. Recognize labels such as:\n    - Grand Total\n    - Total\n    - Total Amount\n    - Amount Payable\n    - Amount Due\n    - Net Payable\n    - Current Charges\n    - Total Due\n11. Extract purchase order number when visible.\n12. Extract all clearly visible line items.\n13. For utility bills, quantity and unit price can be null.\n14. Utility/service charges can still be line items with\n    description and amount.\n15. Do not confuse invoice date and due date.\n16. Do not calculate missing fields unless the document\n    explicitly provides enough information.\n17. Do not use external knowledge.\n",
+    "ai_response": "{\n  \"supplier_name\": null,\n  \"invoice_number\": null,\n  \"invoice_date\": \"20/Sep/2021\",\n  \"due_date\": \"06/Oct/2021\",\n  \"currency\": \"INR\",\n  \"subtotal\": null,\n  \"tax\": 12.72,\n  \"total\": 1046.00,\n  \"po_number\": null,\n  \"line_items\": [\n    {\n      \"description\": \"వినియోగపు / కనిస ఛార్జీలు\",\n      \"quantity\": null,\n      \"unit_price\": null,\n      \"amount\": 702.80\n    },\n    {\n      \"description\": \"స్థిర ఛార్జీలు\",\n      \"quantity\": null,\n      \"unit_price\": null,\n      \"amount\": 20.00\n    },\n    {\n      \"description\": \"కస్టమర్ ఛార్జీలు\",\n      \"quantity\": null,\n      \"unit_price\": null,\n      \"amount\": 50.00\n    },\n    {\n      \"description\": \"కెపాసిటర్ సర్ఛార్జీ\",\n      \"quantity\": null,\n      \"unit_price\": null,\n      \"amount\": 0.00\n    },\n    {\n      \"description\": \"విద్యుత్ సుంకం\",\n      \"quantity\": null,\n      \"unit_price\": null,\n      \"amount\": 12.72\n    },\n    {\n      \"description\": \"TrueUp @ Rs1.23/U\",\n      \"quantity\": null,\n      \"unit_price\": 1.23,\n      \"amount\": 260.76\n    },\n    {\n      \"description\": \"సర్దుబాటు మొత్తం\",\n      \"quantity\": null,\n      \"unit_price\": null,\n      \"amount\": -0.28\n    }\n  ]\n}",
+    "validation_result": {
+      "overall_status": "WARNING",
+      "checks": [
+        {
+          "check": "Total Check",
+          "status": "INFO",
+          "message": "Final total was identified, but subtotal and/or tax were not available for arithmetic verification."
+        },
+        {
+          "check": "Required Fields",
+          "status": "WARNING",
+          "message": "Missing or unclear fields: Supplier Name, Invoice Number"
+        },
+        {
+          "check": "Line Item Check",
+          "status": "PASS",
+          "message": "7 line item(s) have amounts. 0 line item(s) also had sufficient numeric data for quantity × unit price validation."
+        }
+      ],
+      "validated_at": "2026-09-04T01:04:14"
+    },
+    "details": {
+      "validation_status": "WARNING"
+    }
+  },
+  {
+    "event_id": "620b8ace-7f43-433b-9067-c7fe88f8b675",
+    "timestamp": "2026-09-04T01:04:54",
+    "event_type": "AI_QUESTION_ANSWERED",
+    "document_id": "INV-210AB13EAB520C21",
+    "file_name": "image.png",
+    "file_hash": "210ab13eab520c211ec15d9c513dc3bd72ab822c95952cad56b7ec6682145ec9",
+    "model": "gemini-3.6-flash",
+    "prompt_version": "invoice-assistant-v1.0",
+    "ai_request": "\nYou are a professional invoice knowledge assistant.\n\nAnswer the user's question using ONLY information visible\nin the uploaded invoice/document.\n\nUSER QUESTION:\ncan u give a brief explanation about the bill in an english tabular format?\n\n\n\nRULES:\n\n1. Do not invent information.\n2. Do not use external information.\n3. If information is not available, say:\n   \"This information is not available in the uploaded document.\"\n4. For numerical questions, use values from the document.\n5. If arithmetic is required, show the calculation briefly.\n6. For follow-up questions, use previous conversation context\n   only when relevant.\n7. Keep answers clear and concise.\n",
+    "ai_response": "Here is a brief explanation and comparison of the two electricity bills shown in the image:\n\n### Electricity Bills Summary\n\n| Details / Charge Breakdown | Bill 1 (Jul 21 – Aug 21) | Bill 2 (Aug 21 – Sep 21) |\n| :--- | :--- | :--- |\n| **Bill Date** | 20/Aug/2021 | 20/Sep/2021 |\n| **Due Date** | 06/Sep/2021 | 06/Oct/2021 |\n| **Billed Consumption** | 193 kWh | 212 kWh |\n| **Solar Units** | 237 | 222 |\n| **Consumption / Minimum Charges** | 594.80 | 702.80 |\n| **Fixed Charges** | 20.00 | 20.00 |\n| **Customer Charges** | 45.00 | 50.00 |\n| **Capacitor Surcharge** | 0.00 | 0.00 |\n| **Electricity Duty** | 11.58 | 12.72 |\n| **TrueUp Charges (@ Rs 1.23/Unit)** | 0.00 | 260.76 |\n| **Adjustment Amount** | -0.38 | -0.28 |\n| **Security Deposit (SD) Available** | 400.00 | 400.00 |\n| **Total Amount Payable** | **671.00** | **1046.00** |\n\n### Brief Key Points:\n* **Jul–Aug 2021 Bill:** The total consumption was 193 kWh, resulting in a total bill amount of **671.00** due by 06/Sep/2021.\n* **Aug–Sep 2021 Bill:** Consumption increased to 212 kWh, along with an added **TrueUp charge of 260.76** (@ Rs 1.23/Unit), resulting in a higher total payable amount of **1046.00** due by 06/Oct/2021.",
+    "validation_result": null,
+    "details": {
+      "question": "can u give a brief explanation about the bill in an english tabular format?"
+    }
+  },
+  {
+    "event_id": "4fb1926a-deb9-4c70-b936-e33345608454",
+    "timestamp": "2026-09-04T01:05:07",
+    "event_type": "INVOICE_DATA_CORRECTED",
+    "document_id": "INV-210AB13EAB520C21",
+    "file_name": "image.png",
+    "file_hash": "210ab13eab520c211ec15d9c513dc3bd72ab822c95952cad56b7ec6682145ec9",
+    "model": "gemini-3.6-flash",
+    "prompt_version": "invoice-assistant-v1.0",
+    "ai_request": null,
+    "ai_response": null,
+    "validation_result": {
+      "overall_status": "WARNING",
+      "checks": [
+        {
+          "check": "Total Check",
+          "status": "INFO",
+          "message": "Final total was identified, but subtotal and/or tax were not available for arithmetic verification."
+        },
+        {
+          "check": "Required Fields",
+          "status": "WARNING",
+          "message": "Missing or unclear fields: Supplier Name, Invoice Number"
+        },
+        {
+          "check": "Line Item Check",
+          "status": "PASS",
+          "message": "7 line item(s) have amounts. 0 line item(s) also had sufficient numeric data for quantity × unit price validation."
+        }
+      ],
+      "validated_at": "2026-09-04T01:05:07"
+    },
+    "details": {
+      "validation": {
+        "overall_status": "WARNING",
+        "checks": [
+          {
+            "check": "Total Check",
+            "status": "INFO",
+            "message": "Final total was identified, but subtotal and/or tax were not available for arithmetic verification."
+          },
+          {
+            "check": "Required Fields",
+            "status": "WARNING",
+            "message": "Missing or unclear fields: Supplier Name, Invoice Number"
+          },
+          {
+            "check": "Line Item Check",
+            "status": "PASS",
+            "message": "7 line item(s) have amounts. 0 line item(s) also had sufficient numeric data for quantity × unit price validation."
+          }
+        ],
+        "validated_at": "2026-09-04T01:05:07"
+      }
+    }
+  },
+  {
+    "event_id": "4885678f-9415-402b-baa2-f4b77478f45f",
+    "timestamp": "2026-09-04T01:28:38",
+    "event_type": "DOCUMENT_UPLOADED",
+    "document_id": "INV-210AB13EAB520C21",
+    "file_name": "image.png",
+    "file_hash": "210ab13eab520c211ec15d9c513dc3bd72ab822c95952cad56b7ec6682145ec9",
+    "model": "gemini-3.6-flash",
+    "prompt_version": "invoice-assistant-v1.0",
+    "ai_request": null,
+    "ai_response": null,
+    "validation_result": null,
+    "details": {
+      "file_name": "image.png",
+      "mime_type": "image/png",
+      "size_bytes": 773301,
+      "sha256": "210ab13eab520c211ec15d9c513dc3bd72ab822c95952cad56b7ec6682145ec9"
+    }
+  },
+  {
+    "event_id": "28a64567-7c5c-4372-b902-81abee0125ef",
+    "timestamp": "2026-09-04T01:29:04",
+    "event_type": "AI_EXTRACTION_COMPLETED",
+    "document_id": "INV-210AB13EAB520C21",
+    "file_name": "image.png",
+    "file_hash": "210ab13eab520c211ec15d9c513dc3bd72ab822c95952cad56b7ec6682145ec9",
+    "model": "gemini-3.6-flash",
+    "prompt_version": "invoice-assistant-v1.0",
+    "ai_request": "\nYou are an expert invoice/document extraction AI.\n\nAnalyze the uploaded invoice, supplier invoice, tax invoice,\nutility bill, electricity bill, service invoice, or similar\nfinancial document.\n\nReturn EXACTLY ONE JSON OBJECT.\nDo not return markdown.\nDo not return explanations outside JSON.\n\nUse exactly this structure:\n\n{\n  \"supplier_name\": null,\n  \"invoice_number\": null,\n  \"invoice_date\": null,\n  \"due_date\": null,\n  \"currency\": null,\n  \"subtotal\": null,\n  \"tax\": null,\n  \"total\": null,\n  \"po_number\": null,\n  \"line_items\": [\n    {\n      \"description\": null,\n      \"quantity\": null,\n      \"unit_price\": null,\n      \"amount\": null\n    }\n  ]\n}\n\nRULES:\n\n1. Extract ONLY information visible in the document.\n2. Never invent or guess information.\n3. Use null when a value is unavailable or unreadable.\n4. Preserve invoice numbers exactly as text.\n5. Preserve dates as visible where practical.\n6. Extract currency when visible.\n7. Extract subtotal when visible.\n8. Extract tax when visible.\n9. Extract final payable total when visible.\n10. Recognize labels such as:\n    - Grand Total\n    - Total\n    - Total Amount\n    - Amount Payable\n    - Amount Due\n    - Net Payable\n    - Current Charges\n    - Total Due\n11. Extract purchase order number when visible.\n12. Extract all clearly visible line items.\n13. For utility bills, quantity and unit price can be null.\n14. Utility/service charges can still be line items with\n    description and amount.\n15. Do not confuse invoice date and due date.\n16. Do not calculate missing fields unless the document\n    explicitly provides enough information.\n17. Do not use external knowledge.\n",
+    "ai_response": "```json\n{\n  \"supplier_name\": null,\n  \"invoice_number\": null,\n  \"invoice_date\": \"20/Sep/2021\",\n  \"due_date\": \"06/Oct/2021\",\n  \"currency\": \"Rs.\",\n  \"subtotal\": null,\n  \"tax\": 12.72,\n  \"total\": 1046.00,\n  \"po_number\": null,\n  \"line_items\": [\n    {\n      \"description\": \"వినియోగపు / కనీస ఛార్జీలు\",\n      \"quantity\": null,\n      \"unit_price\": null,\n      \"amount\": 702.80\n    },\n    {\n      \"description\": \"స్థిర ఛార్జీలు\",\n      \"quantity\": null,\n      \"unit_price\": null,\n      \"amount\": 20.00\n    },\n    {\n      \"description\": \"కస్టమర్ ఛార్జీలు\",\n      \"quantity\": null,\n      \"unit_price\": null,\n      \"amount\": 50.00\n    },\n    {\n      \"description\": \"కెపాసిటర్ సర్ఛార్జీ\",\n      \"quantity\": null,\n      \"unit_price\": null,\n      \"amount\": 0.00\n    },\n    {\n      \"description\": \"విద్యుత్ సుంకము\",\n      \"quantity\": null,\n      \"unit_price\": null,\n      \"amount\": 12.72\n    },\n    {\n      \"description\": \"TrueUp @ Rs1.23/U\",\n      \"quantity\": null,\n      \"unit_price\": null,\n      \"amount\": 260.76\n    },\n    {\n      \"description\": \"సర్దుబాటు మొత్తం\",\n      \"quantity\": null,\n      \"unit_price\": null,\n      \"amount\": -0.28\n    }\n  ]\n}\n```",
+    "validation_result": {
+      "overall_status": "WARNING",
+      "checks": [
+        {
+          "check": "Total Check",
+          "status": "INFO",
+          "message": "Final total was identified, but subtotal and/or tax were not available for arithmetic verification."
+        },
+        {
+          "check": "Required Fields",
+          "status": "WARNING",
+          "message": "Missing or unclear fields: Supplier Name, Invoice Number"
+        },
+        {
+          "check": "Line Item Check",
+          "status": "PASS",
+          "message": "7 line item(s) have amounts. 0 line item(s) also had sufficient numeric data for quantity × unit price validation."
+        }
+      ],
+      "validated_at": "2026-09-04T01:29:04"
+    },
+    "details": {
+      "validation_status": "WARNING"
+    }
+  },
+  {
+    "event_id": "f82e0f14-ad74-49af-990e-d018609db943",
+    "timestamp": "2026-09-04T01:30:12",
+    "event_type": "AI_QUESTION_ANSWERED",
+    "document_id": "INV-210AB13EAB520C21",
+    "file_name": "image.png",
+    "file_hash": "210ab13eab520c211ec15d9c513dc3bd72ab822c95952cad56b7ec6682145ec9",
+    "model": "gemini-3.6-flash",
+    "prompt_version": "invoice-assistant-v1.0",
+    "ai_request": "\nYou are a professional invoice knowledge assistant.\n\nAnswer the user's question using ONLY information visible\nin the uploaded invoice/document.\n\nUSER QUESTION:\ncan u give a brief explanation about the bill in an english tabular format?\n\n\n\nRULES:\n\n1. Do not invent information.\n2. Do not use external information.\n3. If information is not available, say:\n   \"This information is not available in the uploaded document.\"\n4. For numerical questions, use values from the document.\n5. If arithmetic is required, show the calculation briefly.\n6. For follow-up questions, use previous conversation context\n   only when relevant.\n7. Keep answers clear and concise.\n",
+    "ai_response": "Here is a brief summary and breakdown of the two electricity bills shown in the image:\n\n| Parameter / Details | Bill 1 (Left Receipt) | Bill 2 (Right Receipt) |\n| :--- | :--- | :--- |\n| **Billing Period** | Aug 21 – Sep 21 | Jul 21 – Aug 21 |\n| **Bill Date** | 20/Sep/2021 | 20/Aug/2021 |\n| **Due Date** | 06/Oct/2021 | 06/Sep/2021 |\n| **Consumption Units** | 212 Kwh / Net 222 | 193 Kwh / Net 237 |\n| **Consumption / Charges** | ₹702.80 | ₹594.80 |\n| **Fixed Charges** | ₹20.00 | ₹20.00 |\n| **Customer Charges** | ₹50.00 | ₹45.00 |\n| **Capacitor Surcharge** | ₹0.00 | ₹0.00 |\n| **Electricity Duty** | ₹12.72 | ₹11.58 |\n| **TrueUp Charges (@ Rs1.23/U)** | ₹260.76 | ₹0.00 |\n| **Adjustment** | -₹0.28 | -₹0.38 |\n| **Total Amount Payable** | **₹1046.00** | **₹671.00** |\n| **Security Deposit (SD) Available** | ₹400.00 | ₹400.00 |",
+    "validation_result": null,
+    "details": {
+      "question": "can u give a brief explanation about the bill in an english tabular format?"
+    }
+  }
+]
