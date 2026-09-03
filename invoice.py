@@ -488,7 +488,6 @@ def call_gemini_with_file(
             [
                 MODEL_NAME,
                 "gemini-3.6-flash",
-                "gemini-3.6-flash-lite",
             ]
         )
     )
