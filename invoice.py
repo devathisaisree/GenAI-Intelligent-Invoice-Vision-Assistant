@@ -32,7 +32,7 @@ APP_TITLE = "GenAI Intelligent Invoice Vision Assistant"
 # Can be changed in .env.
 MODEL_NAME = os.getenv(
     "GEMINI_MODEL",
-    "gemini-2.5-flash"
+    "gemini-3.6-flash"
 )
 
 # Prompt version is recorded in audit history.
